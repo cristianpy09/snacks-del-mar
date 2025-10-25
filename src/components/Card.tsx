@@ -1,29 +1,41 @@
-interface CardProps {
-  title: string
-  img?: string
-  description: string
-}
+import { useState } from "react";
+import { useCart } from "../context/useCart";
 
 export default function Card({ title, img, description }: CardProps) {
+  const { addToCart } = useCart();
+  const [clicked, setClicked] = useState(false);
+
+  const handleAdd = () => {
+    setClicked(true);
+    addToCart({ title, img, description, quantity: 1 });
+    setTimeout(() => setClicked(false), 300);
+  };
+
   return (
-    <div className="card bg-gray-100 w-60 shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 ">
-      <figure className="px-3 pt-3">
-        <img
-          src={img}
-          alt={title}
-          className="rounded-xl object-cover w-full h-58 cursor-pointer"
-        />
+    <div className="bg-gray-100 w-full max-w-[230px] rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 flex flex-col">
+      <figure className="w-full h-44 overflow-hidden">
+        <img src={img} alt={title} className="w-full h-full object-cover" />
       </figure>
 
-      <div className="card-body p-4">
-        <h2 className="card-title text-base">{title}</h2>
-        <p className="text-sm text-gray-600">{description}</p>
+      <div className="flex flex-col justify-between flex-grow p-4">
+        <div>
+          <h2 className="text-base font-semibold text-gray-800">{title}</h2>
+          <p className="text-sm text-gray-600 mt-1 line-clamp-3">
+            {description}
+          </p>
+        </div>
 
-        <div className="flex flex-row gap-2 justify-end mt-2">
-          <button className="btn btn-sm btn-primary">Comprar ahora</button>
-          <button className="btn btn-sm btn-secondary">Añadir</button>
+        <div className="flex flex-col sm:flex-row gap-2 justify-end mt-3">
+          <button
+            onClick={handleAdd}
+            className={`btn btn-sm btn-secondary w-full sm:w-auto transition-transform duration-200 ${
+              clicked ? "scale-90 bg-secondary-focus" : "scale-100"
+            }`}
+          >
+            {clicked ? "✔ Añadido!" : "Añadir"}
+          </button>
         </div>
       </div>
     </div>
-  )
+  );
 }

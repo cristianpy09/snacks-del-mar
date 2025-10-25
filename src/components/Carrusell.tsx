@@ -10,11 +10,12 @@ export default function Carrusell() {
       <div className="hero-overlay"></div>
       <div className="hero-content text-neutral-content text-center">
         <div className="max-w-md">
-          <h1 className="mb-5 text-5xl font-bold">Snacks del Mar</h1>
-          <p className="mb-5 text-3xl">
+          <h1 className="mb-5 text-5xl slogan-font text-[white]">
+            Snacks del Mar
+          </h1>
+          <p className="mb-5 text-xl sm:text-2xl md:text-3xl slogan-font text-[#CAF0F8]">
             sabor, frescura y pasión servidos en cada entrega..
           </p>
-         
         </div>
       </div>
     </div>
