@@ -1,6 +1,10 @@
 import { useState } from "react";
 import { useCart } from "../context/useCart";
-
+interface CardProps {
+  title: string;
+  img?: string;
+  description: string;
+}
 export default function Card({ title, img, description }: CardProps) {
   const { addToCart } = useCart();
   const [clicked, setClicked] = useState(false);
