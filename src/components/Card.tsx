@@ -16,9 +16,13 @@ export default function Card({ title, img, description }: CardProps) {
   };
 
   return (
-    <div className="bg-gray-100 w-full max-w-[230px] rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 flex flex-col">
+    <div className="bg-gray-100 w-full max-w-[230px] rounded-3xl shadow-md hover:shadow-xl hover:scale-105 transition-transform duration-300 flex flex-col overflow-hidden">
       <figure className="w-full h-44 overflow-hidden">
-        <img src={img} alt={title} className="w-full h-full object-cover" />
+        <img
+          src={img}
+          alt={title}
+          className="w-full h-full object-cover rounded-t-3xl"
+        />
       </figure>
 
       <div className="flex flex-col justify-between flex-grow p-4">
