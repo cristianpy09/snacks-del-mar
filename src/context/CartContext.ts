@@ -10,6 +10,7 @@ interface Product {
 interface CartContextType {
   cart: Product[];
   addToCart: (product: Product) => void;
+  removeFromCart: (productTitle: string) => void;
   clearCart: () => void;
 }
 
