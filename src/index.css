@@ -1,2 +1,51 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+@theme {
+  --color-primary: var(--brand-primary, #0ea5e9);
+  --color-primary-focus: var(--brand-primary-focus, #0284c7);
+  --color-secondary: #f43f5e;
+  --color-accent: #10b981;
+  --color-neutral: #1f2937;
+  --color-base-100: #ffffff;
+  
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  /* Default Theme (Cocktails) - Blue/Teal */
+  --brand-primary: #0ea5e9;
+  --brand-primary-focus: #0284c7;
+  --brand-gradient: linear-gradient(to br, #f0f9ff, #ffffff, #fdf2f8);
+}
+
+[data-theme='fritos'] {
+  /* Fritos Theme - Amber/Orange/Warm */
+  --brand-primary: #f59e0b;
+  --brand-primary-focus: #d97706;
+  --brand-gradient: linear-gradient(to br, #fffbeb, #ffffff, #fef2f2);
+}
+
+@layer base {
+  body {
+    @apply text-slate-900 antialiased selection:bg-sky-100 selection:text-sky-900;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    background: var(--brand-gradient);
+    transition: background 0.5s ease;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl shadow-slate-200/50;
+  }
+  
+  .premium-gradient {
+    background: var(--brand-gradient);
+    transition: background 0.5s ease;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
